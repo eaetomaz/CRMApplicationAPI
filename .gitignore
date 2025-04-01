@@ -1,0 +1,15 @@
+# Ignorar a pasta bin e obj do Visual Studio
+bin/
+obj/
+
+# Ignorar arquivos de configuração do VSCode
+.vscode/
+
+# Ignorar a pasta .vs do Visual Studio
+.vs/
+
+# Ignorar arquivos de log
+*.log
+
+# Ignorar arquivos temporários
+*~
