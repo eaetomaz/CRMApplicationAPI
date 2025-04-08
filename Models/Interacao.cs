@@ -19,6 +19,6 @@ namespace CRMApplicationAPI.Models
         public DateTime DataInteracao { get; set; } = DateTime.Now;
 
         [ForeignKey("ClienteId")]
-        public Cliente Cliente { get; set; }
+        public Clientes Cliente { get; set; }
     }
 }

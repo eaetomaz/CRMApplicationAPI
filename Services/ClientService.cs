@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CRMApplicationAPI.Services
 {
-    public class ClientService : IBaseService<Cliente>
+    public class ClientService : IBaseService<Clientes>
     {
         private readonly ApplicationDbContext _context;
 
@@ -14,24 +14,24 @@ namespace CRMApplicationAPI.Services
             _context = context;
         }
 
-        public async Task<IEnumerable<Cliente>> GetAll()
+        public async Task<IEnumerable<Clientes>> GetAll()
         {
             return await _context.Clientes.ToListAsync();
         }
 
-        public async Task<Cliente> GetById(int id)
+        public async Task<Clientes> GetById(int id)
         {
             return await _context.Clientes.FindAsync(id);
         }
 
-        public async Task<Cliente> Create(Cliente entity)
+        public async Task<Clientes> Create(Clientes entity)
         {
             _context.Clientes.Add(entity);
             _context.SaveChangesAsync();
             return entity;
         }
 
-        public async Task<Cliente> Update(Cliente entity)
+        public async Task<Clientes> Update(Clientes entity)
         {
             _context.Entry(entity).State = EntityState.Modified;
             await _context.SaveChangesAsync();

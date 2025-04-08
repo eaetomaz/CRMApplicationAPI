@@ -3,9 +3,9 @@ using CRMApplicationAPI.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CRMApplicationAPI.Controllers
-{
-    [Route("api/[controller]")]
+{   
     [ApiController]
+    [Route("api/[controller]")]
     public class ClientController : Controller
     {
         private readonly ClientService clientService;
@@ -16,13 +16,13 @@ namespace CRMApplicationAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Cliente>>> GetClients()
+        public async Task<ActionResult<IEnumerable<Clientes>>> GetClients()
         {
             return Ok(await clientService.GetAll());
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Cliente>> GetClient(int id)
+        public async Task<ActionResult<Clientes>> GetClient(int id)
         {
             var client = await clientService.GetById(id);
             if (client == null)
@@ -32,14 +32,14 @@ namespace CRMApplicationAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Cliente>> CreateClient(Cliente client)
+        public async Task<ActionResult<Clientes>> CreateClient(Clientes client)
         {
             var novoCliente = await clientService.Create(client);
             return CreatedAtAction(nameof(GetClient), new { id = novoCliente.Id }, novoCliente);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateCliente(int id, Cliente cliente)
+        public async Task<IActionResult> UpdateCliente(int id, Clientes cliente)
         {
             if (id != cliente.Id) return BadRequest();
             await clientService.Update(cliente);
