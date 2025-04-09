@@ -1,9 +1,11 @@
 ﻿using CRMApplicationAPI.Models;
 using CRMApplicationAPI.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CRMApplicationAPI.Controllers
-{   
+{
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class ClientController : Controller
