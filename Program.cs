@@ -19,11 +19,12 @@ namespace CRMApplicationAPI
 
             builder.Services.AddRazorPages();
             
+
             builder.Services.AddScoped<IBaseService<Clientes>, ClientService>();
             builder.Services.AddScoped<ClientService>();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            builder.Services.AddControllers();
+            builder.Services.AddControllers();            
 
             builder.Services.AddAuthentication("Bearer")
             .AddJwtBearer("Bearer", options =>
@@ -50,6 +51,7 @@ namespace CRMApplicationAPI
                 app.UseSwaggerUI();
             }
 
+            app.UseMiddleware<ExceptionMiddleware>();
             app.UseRouting();
             app.UseAuthorization();
             
